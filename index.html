@@ -1,0 +1,1663 @@
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Winged Solar Solutions | Deployable Energy Infrastructure</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            },
+            steel: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              200: '#e2e8f0',
+              300: '#cbd5e1',
+              400: '#94a3b8',
+              500: '#64748b',
+              600: '#475569',
+              700: '#334155',
+              800: '#1e293b',
+              900: '#0f172a',
+              950: '#020617',
+            }
+          },
+          spacing: {
+            '18': '4.5rem',
+            '22': '5.5rem',
+          },
+          backgroundImage: {
+            'grid-pattern': "linear-gradient(to right, rgba(56, 189, 248, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(56, 189, 248, 0.03) 1px, transparent 1px)",
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --accent: #38bdf8;
+      --accent-dim: rgba(56, 189, 248, 0.08);
+      --accent-border: rgba(56, 189, 248, 0.2);
+      --bg-primary: #050505;
+      --bg-secondary: #0a0a0a;
+      --bg-tertiary: #111111;
+      --surface: #161616;
+      --surface-hover: #1c1c1c;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-tertiary: #64748b;
+      --border: #262626;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    ::selection {
+      background: rgba(56, 189, 248, 0.25);
+      color: #fff;
+    }
+
+    .bg-grid-pattern {
+      background-size: 32px 32px;
+    }
+
+    .text-balance {
+      text-wrap: balance;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-1 { transition-delay: 80ms; }
+    .stagger-2 { transition-delay: 160ms; }
+    .stagger-3 { transition-delay: 240ms; }
+    .stagger-4 { transition-delay: 320ms; }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .spec-row {
+      transition: background-color 0.15s ease;
+    }
+
+    .spec-row:hover {
+      background-color: var(--accent-dim);
+    }
+
+    .product-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-border);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: #7dd3fc;
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      background: transparent;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent-border);
+      background: var(--accent-dim);
+    }
+
+    .architecture-block {
+      transition: all 0.3s ease;
+    }
+
+    .architecture-block:hover {
+      border-color: var(--accent-border);
+      background: rgba(56, 189, 248, 0.04);
+    }
+
+    .tab-btn.active {
+      color: var(--accent);
+      border-left-color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    .metric-value {
+      font-variant-numeric: tabular-nums;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.08);
+    }
+
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    .video-overlay {
+      background: linear-gradient(180deg, rgba(5,5,5,0.3) 0%, rgba(5,5,5,0.85) 70%, rgba(5,5,5,1) 100%);
+    }
+
+    .hero-vignette {
+      background: radial-gradient(circle at center, transparent 0%, rgba(5,5,5,0.4) 100%);
+    }
+
+    .glow {
+      box-shadow: 0 0 80px rgba(56, 189, 248, 0.08);
+    }
+
+    .technical-table th {
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.6875rem;
+      color: var(--text-tertiary);
+    }
+
+    .technical-table td {
+      font-variant-numeric: tabular-nums;
+    }
+
+    @media (max-width: 768px) {
+      .bg-grid-pattern {
+        background-size: 24px 24px;
+      }
+    }
+  </style>
+</head>
+<body class="bg-[#050505] text-slate-50 antialiased overflow-x-hidden">
+
+  <!-- Header -->
+  <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+    <div class="mx-auto max-w-[1440px] px-6 lg:px-12">
+      <div class="flex h-20 items-center justify-between">
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-8 h-8 border border-slate-700 flex items-center justify-center bg-[#0a0a0a] group-hover:border-sky-400/40 transition-colors">
+            <i data-lucide="zap" class="w-4 h-4 text-sky-400"></i>
+          </div>
+          <span class="text-sm font-semibold tracking-wide uppercase text-slate-100">Winged Solar</span>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-10">
+          <a href="#platforms" class="nav-link text-xs font-medium tracking-wide uppercase text-slate-400 hover:text-white transition-colors">Platforms</a>
+          <a href="#industries" class="nav-link text-xs font-medium tracking-wide uppercase text-slate-400 hover:text-white transition-colors">Commercial & Industrial</a>
+          <a href="#power-water" class="nav-link text-xs font-medium tracking-wide uppercase text-slate-400 hover:text-white transition-colors">EPC Advantage</a>
+          <a href="#critical-infrastructure" class="nav-link text-xs font-medium tracking-wide uppercase text-slate-400 hover:text-white transition-colors">Critical Infrastructure</a>
+          <a href="#resources" class="nav-link text-xs font-medium tracking-wide uppercase text-slate-400 hover:text-white transition-colors">Resources</a>
+          <a href="#about" class="nav-link text-xs font-medium tracking-wide uppercase text-slate-400 hover:text-white transition-colors">About</a>
+          <a href="#contact" class="nav-link text-xs font-medium tracking-wide uppercase text-slate-400 hover:text-white transition-colors">Contact</a>
+        </nav>
+
+        <div class="hidden lg:flex items-center gap-4">
+          <a href="#contact" class="btn-secondary px-5 py-2 text-xs font-semibold tracking-wide uppercase text-slate-300">Request Brief</a>
+          <a href="#platforms" class="btn-primary px-5 py-2 text-xs font-semibold tracking-wide uppercase">Explore Platforms</a>
+        </div>
+
+        <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-300 hover:text-white">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu fixed inset-y-0 right-0 z-[60] w-full max-w-sm bg-[#0a0a0a] border-l border-[#262626] p-8">
+    <div class="flex justify-between items-center mb-12">
+      <span class="text-sm font-semibold tracking-wide uppercase">Menu</span>
+      <button id="mobile-menu-close" class="p-2 text-slate-400 hover:text-white">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-6">
+      <a href="#platforms" class="text-lg font-medium text-slate-300 hover:text-sky-400 transition-colors">Platforms</a>
+      <a href="#industries" class="text-lg font-medium text-slate-300 hover:text-sky-400 transition-colors">Commercial & Industrial</a>
+      <a href="#power-water" class="text-lg font-medium text-slate-300 hover:text-sky-400 transition-colors">EPC Advantage</a>
+      <a href="#critical-infrastructure" class="text-lg font-medium text-slate-300 hover:text-sky-400 transition-colors">Critical Infrastructure</a>
+      <a href="#resources" class="text-lg font-medium text-slate-300 hover:text-sky-400 transition-colors">Resources</a>
+      <a href="#about" class="text-lg font-medium text-slate-300 hover:text-sky-400 transition-colors">About</a>
+      <a href="#contact" class="text-lg font-medium text-slate-300 hover:text-sky-400 transition-colors">Contact</a>
+    </nav>
+    <div class="mt-12 flex flex-col gap-4">
+      <a href="#contact" class="btn-secondary w-full text-center py-3 text-xs font-semibold tracking-wide uppercase">Request Technical Brief</a>
+      <a href="#platforms" class="btn-primary w-full text-center py-3 text-xs font-semibold tracking-wide uppercase">Explore Platforms</a>
+    </div>
+  </div>
+  <div id="mobile-menu-overlay" class="fixed inset-0 z-[55] bg-black/80 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+  <!-- Hero Section -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Background -->
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2072&auto=format&fit=crop')] bg-cover bg-center bg-no-repeat"></div>
+      <div class="hero-vignette absolute inset-0"></div>
+      <div class="video-overlay absolute inset-0"></div>
+      <div class="absolute inset-0 bg-grid-pattern opacity-50"></div>
+    </div>
+
+    <div class="relative z-10 mx-auto max-w-[1440px] px-6 lg:px-12 pt-32 pb-24 text-center">
+      <div class="max-w-4xl mx-auto">
+        <div class="reveal inline-flex items-center gap-2 px-4 py-2 border border-[#262626] bg-[#0a0a0a]/80 backdrop-blur-sm mb-8">
+          <span class="w-1.5 h-1.5 bg-sky-400 rounded-full animate-pulse"></span>
+          <span class="text-[10px] font-semibold tracking-[0.2em] uppercase text-slate-400">Deployable Energy Infrastructure Platform</span>
+        </div>
+        
+        <h1 class="reveal stagger-1 text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.1] text-white mb-6 text-balance">
+          Deployable Solar Infrastructure for Mission Critical Operations
+        </h1>
+        
+        <p class="reveal stagger-2 text-base md:text-lg text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+          Industrial-grade solar and storage systems engineered for rapid deployment, scalable energy independence, and critical infrastructure resilience.
+        </p>
+        
+        <div class="reveal stagger-3 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#platforms" class="btn-primary px-8 py-3.5 text-xs font-semibold tracking-[0.15em] uppercase w-full sm:w-auto">
+            Explore Platforms
+          </a>
+          <a href="#contact" class="btn-secondary px-8 py-3.5 text-xs font-semibold tracking-[0.15em] uppercase text-slate-300 w-full sm:w-auto">
+            Request Technical Brief
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Metric Strip -->
+      <div class="reveal stagger-4 mt-24 md:mt-32 grid grid-cols-2 md:grid-cols-4 gap-px border border-[#262626] bg-[#262626] max-w-4xl mx-auto">
+        <div class="bg-[#0a0a0a]/90 backdrop-blur-sm p-6 md:p-8">
+          <div class="metric-value text-2xl md:text-3xl font-semibold text-white mb-1" data-target="24">0</div>
+          <div class="text-[10px] font-medium tracking-[0.15em] uppercase text-slate-500">Hour Deployment</div>
+        </div>
+        <div class="bg-[#0a0a0a]/90 backdrop-blur-sm p-6 md:p-8">
+          <div class="metric-value text-2xl md:text-3xl font-semibold text-white mb-1" data-target="99.9" data-suffix="%">0</div>
+          <div class="text-[10px] font-medium tracking-[0.15em] uppercase text-slate-500">System Uptime</div>
+        </div>
+        <div class="bg-[#0a0a0a]/90 backdrop-blur-sm p-6 md:p-8">
+          <div class="metric-value text-2xl md:text-3xl font-semibold text-white mb-1" data-target="85" data-suffix="%">0</div>
+          <div class="text-[10px] font-medium tracking-[0.15em] uppercase text-slate-500">Cost Reduction</div>
+        </div>
+        <div class="bg-[#0a0a0a]/90 backdrop-blur-sm p-6 md:p-8">
+          <div class="metric-value text-2xl md:text-3xl font-semibold text-white mb-1" data-target="6" data-suffix="+">0</div>
+          <div class="text-[10px] font-medium tracking-[0.15em] uppercase text-slate-500">Continents</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+      <i data-lucide="chevron-down" class="w-5 h-5 text-slate-600"></i>
+    </div>
+  </section>
+
+  <!-- Mission Brief -->
+  <section class="relative py-24 md:py-32 border-b border-[#111]">
+    <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 lg:px-12">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-24">
+        <div class="lg:col-span-5 reveal">
+          <span class="text-[10px] font-semibold tracking-[0.2em] uppercase text-sky-400 mb-4 block">System Architecture</span>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-white leading-tight">
+            Not a solar company. An infrastructure platform.
+          </h2>
+        </div>
+        <div class="lg:col-span-7 reveal stagger-1">
+          <p class="text-base md:text-lg text-slate-400 leading-relaxed mb-8">
+            Winged Solar Solutions designs, engineers, and deploys containerized and trailer-based solar generation systems for operators who cannot tolerate energy uncertainty. Our platforms integrate PV generation, battery storage, power conversion, and remote monitoring into modular units that deploy in hours, not months.
+          </p>
+          <p class="text-base text-slate-500 leading-relaxed">
+            Built for defense-grade reliability, commercial scalability, and critical infrastructure redundancy. Every system is engineered as part of a unified platform — not a one-off installation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product System Overview -->
+  <section id="platforms" class="relative py-24 md:py-32">
+    <div class="mx-auto max-w-[1440px] px-6 lg:px-12">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+        <div class="reveal">
+          <span class="text-[10px] font-semibold tracking-[0.2em] uppercase text-sky-400 mb-4 block">Product System</span>
+          <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-white">Deployable Platforms</h2>
+        </div>
+        <p class="reveal stagger-1 text-sm text-slate-400 max-w-md">
+          Three standardized system architectures. Scalable from single-unit deployments to multi-megawatt networked infrastructure.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Eagle -->
+        <div class="product-card reveal stagger-1 group relative bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden">
+          <div class="aspect-[4/3] bg-[#0f0f0f] relative overflow-hidden">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1548337138-e87d889cc369?q=80&w=2076&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-50 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1.5 bg-[#111] border border-[#262626] text-[10px] font-semibold tracking-[0.15em] uppercase text-sky-400">High Density</span>
+            </div>
+          </div>
+          <div class="p-6 md:p-8">
+            <h3 class="text-2xl font-semibold text-white mb-2">Eagle</h3>
+            <p class="text-xs font-medium tracking-[0.15em] uppercase text-slate-500 mb-4">Deployable Solar Infrastructure Unit</p>
+            <p class="text-sm text-slate-400 leading-relaxed mb-6">
+              High-density deployable solar infrastructure for fixed-site and semi-permanent installations requiring maximum energy output per unit footprint.
+            </p>
+            <div class="flex items-center gap-2 text-xs font-medium text-sky-400 uppercase tracking-wide">
+              <span>View Technical Specs</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hawk -->
+        <div class="product-card reveal stagger-2 group relative bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden">
+          <div class="aspect-[4/3] bg-[#0f0f0f] relative overflow-hidden">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497440001374-f26997328c1b?q=80&w=2064&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-50 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1.5 bg-[#111] border border-[#262626] text-[10px] font-semibold tracking-[0.15em] uppercase text-sky-400">Mobile</span>
+            </div>
+          </div>
+          <div class="p-6 md:p-8">
+            <h3 class="text-2xl font-semibold text-white mb-2">Hawk</h3>
+            <p class="text-xs font-medium tracking-[0.15em] uppercase text-slate-500 mb-4">Mobile Solar + Storage Platform</p>
+            <p class="text-sm text-slate-400 leading-relaxed mb-6">
+              Trailer-integrated solar generation and battery storage platform for rapidly relocatable power in remote, emergency, and tactical environments.
+            </p>
+            <div class="flex items-center gap-2 text-xs font-medium text-sky-400 uppercase tracking-wide">
+              <span>View Technical Specs</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sparrow -->
+        <div class="product-card reveal stagger-3 group relative bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden">
+          <div class="aspect-[4/3] bg-[#0f0f0f] relative overflow-hidden">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=2058&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-50 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1.5 bg-[#111] border border-[#262626] text-[10px] font-semibold tracking-[0.15em] uppercase text-sky-400">Portable</span>
+            </div>
+          </div>
+          <div class="p-6 md:p-8">
+            <h3 class="text-2xl font-semibold text-white mb-2">Sparrow</h3>
+            <p class="text-xs font-medium tracking-[0.15em] uppercase text-slate-500 mb-4">Compact Portable Energy System</p>
+            <p class="text-sm text-slate-400 leading-relaxed mb-6">
+              Compact portable energy system for tactical communications, mobile command, and small-scale critical loads requiring immediate power.
+            </p>
+            <div class="flex items-center gap-2 text-xs font-medium text-sky-400 uppercase tracking-wide">
+              <span>View Technical Specs</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Critical Product Card System -->
+  <section class="relative py-24 md:py-32 bg-[#080808] border-y border-[#111]">
+    <div class="absolute inset-0 bg-grid-pattern opacity-20"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 lg:px-12">
+      <div class="mb-16 reveal">
+        <span class="text-[10px] font-semibold tracking-[0.2em] uppercase text-sky-400 mb-4 block">Technical Modules</span>
+        <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-4">Engineering-Grade System Cards</h2>
+        <p class="text-sm text-slate-400 max-w-2xl">
+          Each product is presented as a system module with technical specifications, deployment parameters, and capability tags. No marketing language. Only engineering data.
+        </p>
+      </div>
+
+      <!-- Module Tabs -->
+      <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 mb-12 reveal">
+        <div class="lg:w-64 flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0">
+          <button class="tab-btn active w-full text-left px-5 py-4 border-l-2 border-sky-400 bg-sky-400/5 text-sm font-medium text-sky-400 whitespace-nowrap transition-all" data-tab="eagle-module">
+            Eagle Module
+          </button>
+          <button class="tab-btn w-full text-left px-5 py-4 border-l-2 border-[#262626] bg-transparent text-sm font-medium text-slate-400 whitespace-nowrap transition-all" data-tab="hawk-module">
+            Hawk Module
+          </button>
+          <button class="tab-btn w-full text-left px-5 py-4 border-l-2 border-[#262626] bg-transparent text-sm font-medium text-slate-400 whitespace-nowrap transition-all" data-tab="sparrow-module">
+            Sparrow Module
+          </button>
+        </div>
+
+        <div class="flex-1">
+          <!-- Eagle Module -->
+          <div id="eagle-module" class="tab-panel active">
+            <div class="border border-[#1a1a1a] bg-[#0a0a0a]">
+              <div class="grid lg:grid-cols-5">
+                <div class="lg:col-span-3 p-8 md:p-10 border-b lg:border-b-0 lg:border-r border-[#1a1a1a]">
+                  <div class="flex items-start justify-between mb-8">
+                    <div>
+                      <h3 class="text-3xl font-semibold text-white mb-2">Eagle</h3>
+                      <p class="text-xs font-medium tracking-[0.15em] uppercase text-slate-500">Deployable Solar Infrastructure Unit</p>
+                    </div>
+                    <span class="px-3 py-1.5 border border-sky-400/30 bg-sky-400/5 text-[10px] font-semibold tracking-[0.15em] uppercase text-sky-400">Mission Critical</span>
+                  </div>
+
+                  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <div class="p-4 bg-[#111] border border-[#1a1a1a]">
+                      <div class="text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-2">Power Capacity</div>
+                      <div class="text-lg font-semibold text-white">1.5 <span class="text-sm text-slate-400 font-normal">MW</span></div>
+                    </div>
+                    <div class="p-4 bg-[#111] border border-[#1a1a1a]">
+                      <div class="text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-2">Deployment</div>
+                      <div class="text-lg font-semibold text-white">24 <span class="text-sm text-slate-400 font-normal">Hrs</span></div>
+                    </div>
+                    <div class="p-4 bg-[#111] border border-[#1a1a1a]">
+                      <div class="text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-2">Mobility</div>
+                      <div class="text-sm font-semibold text-white">Container</div>
+                    </div>
+                    <div class="p-4 bg-[#111] border border-[#1a1a1a]">
+                      <div class="text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-2">Storage</div>
+                      <div class="text-sm font-semibold text-white">Modular</div>
+                    </div>
+                  </div>
+
+                  <p class="text-sm text-slate-400 leading-relaxed mb-6">
+                    Containerized high-density PV generation system with integrated racking, cabling, and power electronics. Engineered for rapid field assembly and networked control.
+                  </p>
+
+                  <div class="flex flex-wrap gap-2 mb-8">
+                    <span class="px-3 py-1.5 bg-[#111] border border-[#262626] text-[10px] font-medium tracking-wide uppercase text-slate-400">Telecom</span>
+                    <span class="px-3 py-1.5 bg-[#111] border border-[#262626] text-[10px] font-medium tracking-wide uppercase text-slate-400">EV Charging</span>
+                    <span class="px-3 py-1.5 bg-[#111] border border-[#262626] text-[10px] font-medium tracking-wide uppercase text-slate-400">Critical Infrastructure</span>
+                    <span class="px-3 py-1.5 bg-[#111] border border-[#262626] text-[10px] font-medium tracking-wide uppercase text-slate-400">Data Centers</span>
+                  </div>
+
+                  <div class="flex flex-wrap gap-4">
+                    <button class="btn-primary px-6 py-2.5 text-[10px] font-semibold tracking-[0.15em] uppercase">View Technical Specs</button>
+                    <button class="btn-secondary px-6 py-2.5 text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-300">Request Deployment Brief</button>
+                  </div>
+                </div>
+                <div class="lg:col-span-2 relative min-h-[320px] lg:min-h-full bg-[#0f0f0f]">
+                  <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1548337138-e87d889cc369?q=80&w=2076&auto=format&fit=crop')] bg-cover bg-center opacity-30"></div>
+                  <div class="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-transparent to-transparent lg:bg-gradient-to-l"></div>
+                  <div class="absolute bottom-6 left-6 right-6">
+                    <div class="flex items-center gap-3 text-[10px] tracking-[0.15em] uppercase text-slate-500">
+                      <i data-lucide="box" class="w-4 h-4 text-sky-400"></i>
+                      <span>ISO Container Format</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hawk Module -->
+          <div id="hawk-module" class="tab-panel hidden">
+            <div class="border border-[#1a1a1a] bg-[#0a0a0a]">
+              <div class="grid lg:grid-cols-5">
+                <div class="lg:col-span-3 p-8 md:p-10 border-b lg:border-b-0 lg:border-r border-[#1a1a1a]">
+                  <div class="flex items-start justify-between mb-8">
+                    <div>
+                      <h3 class="text-3xl font-semibold text-white mb-2">Hawk</h3>
+                      <p class="text-xs font-medium tracking-[0.15em] uppercase text-slate-500">Mobile Solar + Storage Platform</p>
+                    </div>
+                    <span class="px-3 py-1.5 border border-sky-400/30 bg-sky-400/5 text-[10px] font-semibold tracking-[0.15em] uppercase text-sky-400">Rapid Relocation</span>
+                  </div>
+
+                  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <div class="p-4 bg-[#111] border border-[#1a1a1a]">
+                      <div class="text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-2">Power Capacity</div>
+                      <div class="text-lg font-semibold text-white">250 <span class="text-sm text-slate-400 font-normal">kW</span></div>
+                    </div>
+                    <div class="p-4 bg-[#111] border border-[#1a1a1a]">
+                      <div class="text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-2">Deployment</div>
+                      <div class="text-lg font-semibold text-white">4 <span class="text-sm text-slate-400 font-normal">Hrs</span></div>
+                    </div>
+                    <div class="p-4 bg-[#111] border border-[#1a1a1a]">
+                      <div class="text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-2">Mobility</div>
+                      <div class="text-sm font-semibold text-white">Trailer</div>
+                    </div>
+                    <div class="p-4 bg-[#111] border border-[#1a1a1a]">
+                      <div class="text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-2">Storage</div>
+                      <div class="text-sm font-semibold text-white">Integrated</div>
+                    </div>
+                  </div>
+
+                  <p class="text-sm text-slate-400 leading-relaxed mb-6">
+                    Dual-axle trailer platform with fold-out solar array, lithium-ion storage, and onboard inverter. Deploys without cranes or specialized labor.
+                  </p>
+
+                  <div class="flex flex-wrap gap-2 mb-8">
+                    <span class="px-3 py-1.5 bg-[#111] border border-[#262626] text-[10px] font-medium tracking-wide uppercase text-slate-400">Disaster Response</span>
+                    <span class="px-3 py-1.5 bg-[#111] border border-[#262626] text-[10px] font-medium tracking-wide uppercase text-slate-400">Remote Operations</span>
+                    <span class="px-3 py-1.5 bg-[#111] border border-[#262626] text-[10px] font-medium tracking-wide uppercase text-slate-400">Military</span>
+                    <span class="px-3 py-1.5 bg-[#111] border border-[#262626] text-[10px] font-medium tracking-wide uppercase text-slate-400">Events</span>
+                  </div>
+
+                  <div class="flex flex-wrap gap-4">
+                    <button class="btn-primary px-6 py-2.5 text-[10px] font-semibold tracking-[0.15em] uppercase">View Technical Specs</button>
+                    <button class="btn-secondary px-6 py-2.5 text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-300">Request Deployment Brief</button>
+                  </div>
+                </div>
+                <div class="lg:col-span-2 relative min-h-[320px] lg:min-h-full bg-[#0f0f0f]">
+                  <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497440001374-f26997328c1b?q=80&w=2064&auto=format&fit=crop')] bg-cover bg-center opacity-30"></div>
+                  <div class="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-transparent to-transparent lg:bg-gradient-to-l"></div>
+                  <div class="absolute bottom-6 left-6 right-6">
+                    <div class="flex items-center gap-3 text-[10px] tracking-[0.15em] uppercase text-slate-500">
+                      <i data-lucide="truck" class="w-4 h-4 text-sky-400"></i>
+                      <span>Towable Platform</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sparrow Module -->
+          <div id="sparrow-module" class="tab-panel hidden">
+            <div class="border border-[#1a1a1a] bg-[#0a0a0a]">
+              <div class="grid lg:grid-cols-5">
+                <div class="lg:col-span-3 p-8 md:p-10 border-b lg:border-b-0 lg:border-r border-[#1a1a1a]">
+                  <div class="flex items-start justify-between mb-8">
+                    <div>
+                      <h3 class="text-3xl font-semibold text-white mb-2">Sparrow</h3>
+                      <p class="text-xs font-medium tracking-[0.15em] uppercase text-slate-500">Compact Portable Energy System</p>
+                    </div>
+                    <span class="px-3 py-1.5 border border-sky-400/30 bg-sky-400/5 text-[10px] font-semibold tracking-[0.15em] uppercase text-sky-400">Man-Portable</span>
+                  </div>
+
+                  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <div class="p-4 bg-[#111] border border-[#1a1a1a]">
+                      <div class="text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-2">Power Capacity</div>
+                      <div class="text-lg font-semibold text-white">15 <span class="text-sm text-slate-400 font-normal">kW</span></div>
+                    </div>
+                    <div class="p-4 bg-[#111] border border-[#1a1a1a]">
+                      <div class="text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-2">Deployment</div>
+                      <div class="text-lg font-semibold text-white">30 <span class="text-sm text-slate-400 font-normal">Min</span></div>
+                    </div>
+                    <div class="p-4 bg-[#111] border border-[#1a1a1a]">
+                      <div class="text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-2">Mobility</div>
+                      <div class="text-sm font-semibold text-white">Portable</div>
+                    </div>
+                    <div class="p-4 bg-[#111] border border-[#1a1a1a]">
+                      <div class="text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-2">Storage</div>
+                      <div class="text-sm font-semibold text-white">Internal</div>
+                    </div>
+                  </div>
+
+                  <p class="text-sm text-slate-400 leading-relaxed mb-6">
+                    Man-portable solar generator with battery backup for small critical loads. Designed for tactical edge, emergency communications, and off-grid instrumentation.
+                  </p>
+
+                  <div class="flex flex-wrap gap-2 mb-8">
+                    <span class="px-3 py-1.5 bg-[#111] border border-[#262626] text-[10px] font-medium tracking-wide uppercase text-slate-400">Tactical Comms</span>
+                    <span class="px-3 py-1.5 bg-[#111] border border-[#262626] text-[10px] font-medium tracking-wide uppercase text-slate-400">Field Monitoring</span>
+                    <span class="px-3 py-1.5 bg-[#111] border border-[#262626] text-[10px] font-medium tracking-wide uppercase text-slate-400">Search & Rescue</span>
+                    <span class="px-3 py-1.5 bg-[#111] border border-[#262626] text-[10px] font-medium tracking-wide uppercase text-slate-400">Remote Sensors</span>
+                  </div>
+
+                  <div class="flex flex-wrap gap-4">
+                    <button class="btn-primary px-6 py-2.5 text-[10px] font-semibold tracking-[0.15em] uppercase">View Technical Specs</button>
+                    <button class="btn-secondary px-6 py-2.5 text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-300">Request Deployment Brief</button>
+                  </div>
+                </div>
+                <div class="lg:col-span-2 relative min-h-[320px] lg:min-h-full bg-[#0f0f0f]">
+                  <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=2058&auto=format&fit=crop')] bg-cover bg-center opacity-30"></div>
+                  <div class="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-transparent to-transparent lg:bg-gradient-to-l"></div>
+                  <div class="absolute bottom-6 left-6 right-6">
+                    <div class="flex items-center gap-3 text-[10px] tracking-[0.15em] uppercase text-slate-500">
+                      <i data-lucide="briefcase" class="w-4 h-4 text-sky-400"></i>
+                      <span>Field-Deployable Unit</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industry Section -->
+  <section id="industries" class="relative py-24 md:py-32">
+    <div class="mx-auto max-w-[1440px] px-6 lg:px-12">
+      <div class="mb-16 reveal">
+        <span class="text-[10px] font-semibold tracking-[0.2em] uppercase text-sky-400 mb-4 block">Deployment Environments</span>
+        <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-4">System Deployment Environments</h2>
+        <p class="text-sm text-slate-400 max-w-2xl">
+          Engineered for industries where energy failure is not an option. Each environment requires a different deployment architecture — all supported by the Winged platform.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1a1a1a] border border-[#1a1a1a]">
+        <div class="industry-card group bg-[#0a0a0a] p-8 md:p-10 hover:bg-[#0f0f0f] transition-colors">
+          <div class="w-10 h-10 border border-[#262626] flex items-center justify-center mb-6 group-hover:border-sky-400/40 transition-colors">
+            <i data-lucide="signal" class="w-5 h-5 text-sky-400"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-white mb-3">Telecom Infrastructure</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Off-grid and backup power for cell towers, relay stations, and network edge facilities in remote or grid-unstable regions.
+          </p>
+        </div>
+
+        <div class="industry-card group bg-[#0a0a0a] p-8 md:p-10 hover:bg-[#0f0f0f] transition-colors">
+          <div class="w-10 h-10 border border-[#262626] flex items-center justify-center mb-6 group-hover:border-sky-400/40 transition-colors">
+            <i data-lucide="battery-charging" class="w-5 h-5 text-sky-400"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-white mb-3">EV Charging Networks</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Rapid-deployment charging depots for fleet operators and charging network operators without waiting for utility upgrades.
+          </p>
+        </div>
+
+        <div class="industry-card group bg-[#0a0a0a] p-8 md:p-10 hover:bg-[#0f0f0f] transition-colors">
+          <div class="w-10 h-10 border border-[#262626] flex items-center justify-center mb-6 group-hover:border-sky-400/40 transition-colors">
+            <i data-lucide="radio" class="w-5 h-5 text-sky-400"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-white mb-3">Disaster Response</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Emergency power for command centers, field hospitals, communications, and relief coordination in disaster-impacted zones.
+          </p>
+        </div>
+
+        <div class="industry-card group bg-[#0a0a0a] p-8 md:p-10 hover:bg-[#0f0f0f] transition-colors">
+          <div class="w-10 h-10 border border-[#262626] flex items-center justify-center mb-6 group-hover:border-sky-400/40 transition-colors">
+            <i data-lucide="factory" class="w-5 h-5 text-sky-400"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-white mb-3">Remote Industrial Operations</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Power for mining, oil & gas, construction, and remote facilities where grid extension is economically unfeasible.
+          </p>
+        </div>
+
+        <div class="industry-card group bg-[#0a0a0a] p-8 md:p-10 hover:bg-[#0f0f0f] transition-colors">
+          <div class="w-10 h-10 border border-[#262626] flex items-center justify-center mb-6 group-hover:border-sky-400/40 transition-colors">
+            <i data-lucide="shield-check" class="w-5 h-5 text-sky-400"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-white mb-3">Critical Infrastructure Resilience</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Microgrid and backup power for water treatment, transportation, data centers, and defense installations requiring always-on operation.
+          </p>
+        </div>
+
+        <div class="industry-card group bg-[#0a0a0a] p-8 md:p-10 hover:bg-[#0f0f0f] transition-colors">
+          <div class="w-10 h-10 border border-[#262626] flex items-center justify-center mb-6 group-hover:border-sky-400/40 transition-colors">
+            <i data-lucide="server" class="w-5 h-5 text-sky-400"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-white mb-3">Data Centers</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Supplementary and emergency generation for hyperscale, edge, and modular data center deployments with strict uptime requirements.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Power Water Architecture Section -->
+  <section id="power-water" class="relative py-24 md:py-32 bg-[#080808] border-y border-[#111]">
+    <div class="absolute inset-0 bg-grid-pattern opacity-20"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 lg:px-12">
+      <div class="mb-16 reveal">
+        <span class="text-[10px] font-semibold tracking-[0.2em] uppercase text-sky-400 mb-4 block">System Architecture</span>
+        <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-4">Power + Water Platform</h2>
+        <p class="text-sm text-slate-400 max-w-2xl">
+          Modular engineering architecture. Layered system blocks showing generation, storage, conversion, and distribution — designed as a technical UI visualization.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8 reveal">
+        <!-- Architecture Diagram -->
+        <div class="lg:col-span-8">
+          <div class="border border-[#1a1a1a] bg-[#0a0a0a] p-8 md:p-10">
+            <div class="flex items-center justify-between mb-8">
+              <h3 class="text-sm font-semibold tracking-wide text-white">Winged Platform Stack</h3>
+              <span class="text-[10px] font-medium tracking-[0.15em] uppercase text-slate-500">v2.4</span>
+            </div>
+
+            <!-- Layer 1: Generation -->
+            <div class="architecture-block border border-[#262626] bg-[#111] p-6 mb-4">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-8 h-8 bg-sky-400/10 border border-sky-400/30 flex items-center justify-center">
+                  <i data-lucide="sun" class="w-4 h-4 text-sky-400"></i>
+                </div>
+                <div>
+                  <div class="text-sm font-semibold text-white">Generation Layer</div>
+                  <div class="text-[10px] tracking-[0.1em] uppercase text-slate-500">PV Arrays · Tracking · Racking</div>
+                </div>
+              </div>
+              <div class="grid grid-cols-3 gap-3">
+                <div class="p-3 bg-[#0a0a0a] border border-[#1a1a1a] text-center">
+                  <div class="text-[10px] text-slate-500 uppercase tracking-wide mb-1">Eagle</div>
+                  <div class="text-sm font-semibold text-white">1.5 MW</div>
+                </div>
+                <div class="p-3 bg-[#0a0a0a] border border-[#1a1a1a] text-center">
+                  <div class="text-[10px] text-slate-500 uppercase tracking-wide mb-1">Hawk</div>
+                  <div class="text-sm font-semibold text-white">250 kW</div>
+                </div>
+                <div class="p-3 bg-[#0a0a0a] border border-[#1a1a1a] text-center">
+                  <div class="text-[10px] text-slate-500 uppercase tracking-wide mb-1">Sparrow</div>
+                  <div class="text-sm font-semibold text-white">15 kW</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Connector -->
+            <div class="flex justify-center my-2">
+              <div class="w-px h-6 bg-[#262626]"></div>
+            </div>
+
+            <!-- Layer 2: Storage -->
+            <div class="architecture-block border border-[#262626] bg-[#111] p-6 mb-4">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-8 h-8 bg-sky-400/10 border border-sky-400/30 flex items-center justify-center">
+                  <i data-lucide="battery" class="w-4 h-4 text-sky-400"></i>
+                </div>
+                <div>
+                  <div class="text-sm font-semibold text-white">Storage Layer</div>
+                  <div class="text-[10px] tracking-[0.1em] uppercase text-slate-500">Lithium-Ion · Thermal Management · BMS</div>
+                </div>
+              </div>
+              <div class="grid grid-cols-3 gap-3">
+                <div class="p-3 bg-[#0a0a0a] border border-[#1a1a1a] text-center">
+                  <div class="text-[10px] text-slate-500 uppercase tracking-wide mb-1">Modular</div>
+                  <div class="text-sm font-semibold text-white">MWh Scale</div>
+                </div>
+                <div class="p-3 bg-[#0a0a0a] border border-[#1a1a1a] text-center">
+                  <div class="text-[10px] text-slate-500 uppercase tracking-wide mb-1">Integrated</div>
+                  <div class="text-sm font-semibold text-white">500 kWh</div>
+                </div>
+                <div class="p-3 bg-[#0a0a0a] border border-[#1a1a1a] text-center">
+                  <div class="text-[10px] text-slate-500 uppercase tracking-wide mb-1">Internal</div>
+                  <div class="text-sm font-semibold text-white">40 kWh</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Connector -->
+            <div class="flex justify-center my-2">
+              <div class="w-px h-6 bg-[#262626]"></div>
+            </div>
+
+            <!-- Layer 3: Conversion -->
+            <div class="architecture-block border border-[#262626] bg-[#111] p-6 mb-4">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-8 h-8 bg-sky-400/10 border border-sky-400/30 flex items-center justify-center">
+                  <i data-lucide="cpu" class="w-4 h-4 text-sky-400"></i>
+                </div>
+                <div>
+                  <div class="text-sm font-semibold text-white">Power Conversion Layer</div>
+                  <div class="text-[10px] tracking-[0.1em] uppercase text-slate-500">Inverters · Rectifiers · DC/DC</div>
+                </div>
+              </div>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div class="p-3 bg-[#0a0a0a] border border-[#1a1a1a] text-center">
+                  <div class="text-[10px] text-slate-500 uppercase tracking-wide mb-1">AC Output</div>
+                  <div class="text-sm font-semibold text-white">480V 3φ</div>
+                </div>
+                <div class="p-3 bg-[#0a0a0a] border border-[#1a1a1a] text-center">
+                  <div class="text-[10px] text-slate-500 uppercase tracking-wide mb-1">DC Output</div>
+                  <div class="text-sm font-semibold text-white">48V / 24V</div>
+                </div>
+                <div class="p-3 bg-[#0a0a0a] border border-[#1a1a1a] text-center">
+                  <div class="text-[10px] text-slate-500 uppercase tracking-wide mb-1">Frequency</div>
+                  <div class="text-sm font-semibold text-white">50/60 Hz</div>
+                </div>
+                <div class="p-3 bg-[#0a0a0a] border border-[#1a1a1a] text-center">
+                  <div class="text-[10px] text-slate-500 uppercase tracking-wide mb-1">Grid Sync</div>
+                  <div class="text-sm font-semibold text-white">Islandable</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Connector -->
+            <div class="flex justify-center my-2">
+              <div class="w-px h-6 bg-[#262626]"></div>
+            </div>
+
+            <!-- Layer 4: Control -->
+            <div class="architecture-block border border-[#262626] bg-[#111] p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-8 h-8 bg-sky-400/10 border border-sky-400/30 flex items-center justify-center">
+                  <i data-lucide="layout-dashboard" class="w-4 h-4 text-sky-400"></i>
+                </div>
+                <div>
+                  <div class="text-sm font-semibold text-white">Control & Monitoring Layer</div>
+                  <div class="text-[10px] tracking-[0.1em] uppercase text-slate-500">SCADA · Telemetry · Remote Diagnostics</div>
+                </div>
+              </div>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div class="p-3 bg-[#0a0a0a] border border-[#1a1a1a] text-center">
+                  <div class="text-[10px] text-slate-500 uppercase tracking-wide mb-1">Protocol</div>
+                  <div class="text-sm font-semibold text-white">Modbus / CAN</div>
+                </div>
+                <div class="p-3 bg-[#0a0a0a] border border-[#1a1a1a] text-center">
+                  <div class="text-[10px] text-slate-500 uppercase tracking-wide mb-1">Connectivity</div>
+                  <div class="text-sm font-semibold text-white">LTE / SAT</div>
+                </div>
+                <div class="p-3 bg-[#0a0a0a] border border-[#1a1a1a] text-center">
+                  <div class="text-[10px] text-slate-500 uppercase tracking-wide mb-1">Updates</div>
+                  <div class="text-sm font-semibold text-white">OTA</div>
+                </div>
+                <div class="p-3 bg-[#0a0a0a] border border-[#1a1a1a] text-center">
+                  <div class="text-[10px] text-slate-500 uppercase tracking-wide mb-1">Security</div>
+                  <div class="text-sm font-semibold text-white">AES-256</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Architecture Sidebar -->
+        <div class="lg:col-span-4">
+          <div class="border border-[#1a1a1a] bg-[#0a0a0a] p-8 h-full">
+            <h3 class="text-sm font-semibold tracking-wide text-white mb-6">Platform Specifications</h3>
+            <div class="space-y-0">
+              <div class="spec-row flex justify-between py-4 border-b border-[#1a1a1a]">
+                <span class="text-xs text-slate-500 uppercase tracking-wide">Operating Temperature</span>
+                <span class="text-sm font-medium text-white">-40°C to +60°C</span>
+              </div>
+              <div class="spec-row flex justify-between py-4 border-b border-[#1a1a1a]">
+                <span class="text-xs text-slate-500 uppercase tracking-wide">Humidity</span>
+                <span class="text-sm font-medium text-white">0-100% Condensing</span>
+              </div>
+              <div class="spec-row flex justify-between py-4 border-b border-[#1a1a1a]">
+                <span class="text-xs text-slate-500 uppercase tracking-wide">Wind Rating</span>
+                <span class="text-sm font-medium text-white">180 km/h</span>
+              </div>
+              <div class="spec-row flex justify-between py-4 border-b border-[#1a1a1a]">
+                <span class="text-xs text-slate-500 uppercase tracking-wide">Seismic</span>
+                <span class="text-sm font-medium text-white">Zone 4</span>
+              </div>
+              <div class="spec-row flex justify-between py-4 border-b border-[#1a1a1a]">
+                <span class="text-xs text-slate-500 uppercase tracking-wide">EMI/EMC</span>
+                <span class="text-sm font-medium text-white">MIL-STD-461</span>
+              </div>
+              <div class="spec-row flex justify-between py-4 border-b border-[#1a1a1a]">
+                <span class="text-xs text-slate-500 uppercase tracking-wide">Ingress Protection</span>
+                <span class="text-sm font-medium text-white">NEMA 3R / IP54</span>
+              </div>
+              <div class="spec-row flex justify-between py-4">
+                <span class="text-xs text-slate-500 uppercase tracking-wide">Service Life</span>
+                <span class="text-sm font-medium text-white">25+ Years</span>
+              </div>
+            </div>
+            <div class="mt-8">
+              <button class="btn-secondary w-full py-3 text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-300">Download Architecture PDF</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust & Scale Section -->
+  <section id="critical-infrastructure" class="relative py-24 md:py-32">
+    <div class="mx-auto max-w-[1440px] px-6 lg:px-12">
+      <div class="mb-16 reveal">
+        <span class="text-[10px] font-semibold tracking-[0.2em] uppercase text-sky-400 mb-4 block">Validation</span>
+        <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-4">Trust & Scale</h2>
+        <p class="text-sm text-slate-400 max-w-2xl">
+          Performance validation metrics for enterprise and government operators evaluating deployable energy infrastructure at scale.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div class="reveal stagger-1 border border-[#1a1a1a] bg-[#0a0a0a] p-8">
+          <div class="text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-4">Deployment Speed</div>
+          <div class="metric-value text-4xl md:text-5xl font-semibold text-white mb-3" data-target="24" data-suffix="h">0</div>
+          <p class="text-sm text-slate-400">From delivery to energized operation for containerized systems.</p>
+        </div>
+        <div class="reveal stagger-2 border border-[#1a1a1a] bg-[#0a0a0a] p-8">
+          <div class="text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-4">System Uptime</div>
+          <div class="metric-value text-4xl md:text-5xl font-semibold text-white mb-3" data-target="99.97" data-suffix="%">0</div>
+          <p class="text-sm text-slate-400">Validated across critical infrastructure deployments globally.</p>
+        </div>
+        <div class="reveal stagger-3 border border-[#1a1a1a] bg-[#0a0a0a] p-8">
+          <div class="text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-4">Footprint Reduction</div>
+          <div class="metric-value text-4xl md:text-5xl font-semibold text-white mb-3" data-target="60" data-suffix="%">0</div>
+          <p class="text-sm text-slate-400">Less ground area required vs traditional fixed-tilt solar.</p>
+        </div>
+        <div class="reveal stagger-4 border border-[#1a1a1a] bg-[#0a0a0a] p-8">
+          <div class="text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-4">Global Footprint</div>
+          <div class="metric-value text-4xl md:text-5xl font-semibold text-white mb-3" data-target="14" data-suffix="+">0</div>
+          <p class="text-sm text-slate-400">Countries with active Winged platform deployments.</p>
+        </div>
+      </div>
+
+      <!-- Deployment Map / Visual -->
+      <div class="reveal border border-[#1a1a1a] bg-[#0a0a0a] p-8 md:p-10">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-2">Infrastructure Deployment Network</h3>
+            <p class="text-sm text-slate-400">Active and pending Winged platform deployments across mission-critical environments.</p>
+          </div>
+          <div class="flex gap-6">
+            <div class="text-center">
+              <div class="metric-value text-2xl font-semibold text-white" data-target="340" data-suffix="+">0</div>
+              <div class="text-[10px] uppercase tracking-wide text-slate-500 mt-1">Units Deployed</div>
+            </div>
+            <div class="text-center">
+              <div class="metric-value text-2xl font-semibold text-white" data-target="180" data-suffix="MW">0</div>
+              <div class="text-[10px] uppercase tracking-wide text-slate-500 mt-1">Total Capacity</div>
+            </div>
+          </div>
+        </div>
+        <div class="relative h-64 md:h-80 bg-[#080808] border border-[#1a1a1a] overflow-hidden">
+          <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop')] bg-cover bg-center opacity-20"></div>
+          <div class="absolute inset-0 bg-grid-pattern opacity-40"></div>
+          
+          <!-- Animated Deployment Points -->
+          <div class="deployment-point absolute top-1/4 left-1/4">
+            <div class="w-2 h-2 bg-sky-400 rounded-full"></div>
+            <div class="absolute inset-0 w-2 h-2 bg-sky-400 rounded-full animate-ping"></div>
+          </div>
+          <div class="deployment-point absolute top-1/3 left-1/2">
+            <div class="w-2 h-2 bg-sky-400 rounded-full"></div>
+            <div class="absolute inset-0 w-2 h-2 bg-sky-400 rounded-full animate-ping" style="animation-delay: 0.5s"></div>
+          </div>
+          <div class="deployment-point absolute top-1/2 left-3/4">
+            <div class="w-2 h-2 bg-sky-400 rounded-full"></div>
+            <div class="absolute inset-0 w-2 h-2 bg-sky-400 rounded-full animate-ping" style="animation-delay: 1s"></div>
+          </div>
+          <div class="deployment-point absolute top-2/3 left-1/3">
+            <div class="w-2 h-2 bg-sky-400 rounded-full"></div>
+            <div class="absolute inset-0 w-2 h-2 bg-sky-400 rounded-full animate-ping" style="animation-delay: 1.5s"></div>
+          </div>
+          <div class="deployment-point absolute top-1/2 left-1/5">
+            <div class="w-2 h-2 bg-sky-400 rounded-full"></div>
+            <div class="absolute inset-0 w-2 h-2 bg-sky-400 rounded-full animate-ping" style="animation-delay: 2s"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interior Page Template Demo -->
+  <section id="resources" class="relative py-24 md:py-32 bg-[#080808] border-y border-[#111]">
+    <div class="absolute inset-0 bg-grid-pattern opacity-20"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 lg:px-12">
+      <div class="mb-16 reveal">
+        <span class="text-[10px] font-semibold tracking-[0.2em] uppercase text-sky-400 mb-4 block">Interior Template System</span>
+        <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-4">Technical Documentation Layout</h2>
+        <p class="text-sm text-slate-400 max-w-2xl">
+          Reusable interior page system with sticky section navigation, modular content blocks, technical spec tables, system architecture diagrams, and application breakdowns.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-12">
+        <!-- Sticky Section Index -->
+        <div class="lg:col-span-3 reveal">
+          <div class="lg:sticky lg:top-28">
+            <div class="text-[10px] font-semibold tracking-[0.2em] uppercase text-slate-500 mb-6">On This Page</div>
+            <nav id="interior-nav" class="flex flex-col gap-1 border-l border-[#1a1a1a]">
+              <a href="#int-overview" class="interior-nav-link active pl-5 py-2 text-sm text-slate-400 hover:text-white border-l-2 border-transparent transition-all -ml-px">Overview</a>
+              <a href="#int-specs" class="interior-nav-link pl-5 py-2 text-sm text-slate-400 hover:text-white border-l-2 border-transparent transition-all -ml-px">Technical Specifications</a>
+              <a href="#int-architecture" class="interior-nav-link pl-5 py-2 text-sm text-slate-400 hover:text-white border-l-2 border-transparent transition-all -ml-px">System Architecture</a>
+              <a href="#int-applications" class="interior-nav-link pl-5 py-2 text-sm text-slate-400 hover:text-white border-l-2 border-transparent transition-all -ml-px">Applications</a>
+              <a href="#int-deployment" class="interior-nav-link pl-5 py-2 text-sm text-slate-400 hover:text-white border-l-2 border-transparent transition-all -ml-px">Deployment Process</a>
+              <a href="#int-cta" class="interior-nav-link pl-5 py-2 text-sm text-slate-400 hover:text-white border-l-2 border-transparent transition-all -ml-px">Request Brief</a>
+            </nav>
+          </div>
+        </div>
+
+        <!-- Modular Content -->
+        <div class="lg:col-span-9 space-y-20">
+          <!-- Overview Block -->
+          <div id="int-overview" class="interior-section reveal">
+            <span class="text-[10px] font-semibold tracking-[0.2em] uppercase text-sky-400 mb-4 block">01 / Overview</span>
+            <h3 class="text-2xl md:text-3xl font-semibold text-white mb-4">Eagle Deployable Solar Infrastructure Unit</h3>
+            <p class="text-base text-slate-400 leading-relaxed mb-6">
+              The Eagle is a containerized, high-density solar generation platform designed for rapid field deployment in mission-critical environments. It ships as a standard ISO container and transforms into a fully operational solar array through a proprietary racking and cabling system.
+            </p>
+            <p class="text-base text-slate-400 leading-relaxed">
+              Engineered for scalability, multiple Eagle units can be networked together to form multi-megawatt generation assets without traditional civil works or long-lead utility interconnection timelines.
+            </p>
+          </div>
+
+          <!-- Spec Table Block -->
+          <div id="int-specs" class="interior-section reveal">
+            <span class="text-[10px] font-semibold tracking-[0.2em] uppercase text-sky-400 mb-4 block">02 / Technical Specifications</span>
+            <h3 class="text-2xl md:text-3xl font-semibold text-white mb-6">System Specifications</h3>
+            <div class="overflow-x-auto border border-[#1a1a1a]">
+              <table class="technical-table w-full text-left">
+                <thead class="bg-[#111]">
+                  <tr>
+                    <th class="px-6 py-4 border-b border-[#1a1a1a]">Parameter</th>
+                    <th class="px-6 py-4 border-b border-[#1a1a1a]">Eagle-1500</th>
+                    <th class="px-6 py-4 border-b border-[#1a1a1a]">Eagle-3000</th>
+                    <th class="px-6 py-4 border-b border-[#1a1a1a]">Eagle-5000</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-[#1a1a1a]">
+                  <tr class="spec-row">
+                    <td class="px-6 py-4 text-sm text-slate-300">Rated AC Output</td>
+                    <td class="px-6 py-4 text-sm text-white">1.5 MW</td>
+                    <td class="px-6 py-4 text-sm text-white">3.0 MW</td>
+                    <td class="px-6 py-4 text-sm text-white">5.0 MW</td>
+                  </tr>
+                  <tr class="spec-row">
+                    <td class="px-6 py-4 text-sm text-slate-300">DC Array Capacity</td>
+                    <td class="px-6 py-4 text-sm text-white">2.0 MWp</td>
+                    <td class="px-6 py-4 text-sm text-white">4.2 MWp</td>
+                    <td class="px-6 py-4 text-sm text-white">7.0 MWp</td>
+                  </tr>
+                  <tr class="spec-row">
+                    <td class="px-6 py-4 text-sm text-slate-300">Container Count</td>
+                    <td class="px-6 py-4 text-sm text-white">1</td>
+                    <td class="px-6 py-4 text-sm text-white">2</td>
+                    <td class="px-6 py-4 text-sm text-white">4</td>
+                  </tr>
+                  <tr class="spec-row">
+                    <td class="px-6 py-4 text-sm text-slate-300">Deployment Time</td>
+                    <td class="px-6 py-4 text-sm text-white">24 Hours</td>
+                    <td class="px-6 py-4 text-sm text-white">48 Hours</td>
+                    <td class="px-6 py-4 text-sm text-white">72 Hours</td>
+                  </tr>
+                  <tr class="spec-row">
+                    <td class="px-6 py-4 text-sm text-slate-300">Footprint</td>
+                    <td class="px-6 py-4 text-sm text-white">6,000 m²</td>
+                    <td class="px-6 py-4 text-sm text-white">12,000 m²</td>
+                    <td class="px-6 py-4 text-sm text-white">20,000 m²</td>
+                  </tr>
+                  <tr class="spec-row">
+                    <td class="px-6 py-4 text-sm text-slate-300">Storage Integration</td>
+                    <td class="px-6 py-4 text-sm text-white">Modular MWh</td>
+                    <td class="px-6 py-4 text-sm text-white">Modular MWh</td>
+                    <td class="px-6 py-4 text-sm text-white">Modular MWh</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Architecture Block -->
+          <div id="int-architecture" class="interior-section reveal">
+            <span class="text-[10px] font-semibold tracking-[0.2em] uppercase text-sky-400 mb-4 block">03 / System Architecture</span>
+            <h3 class="text-2xl md:text-3xl font-semibold text-white mb-6">Eagle System Block Diagram</h3>
+            <div class="border border-[#1a1a1a] bg-[#0a0a0a] p-6 md:p-8">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="architecture-block p-5 border border-[#262626] bg-[#111] text-center">
+                  <i data-lucide="container" class="w-6 h-6 text-sky-400 mx-auto mb-3"></i>
+                  <div class="text-sm font-semibold text-white mb-1">Transport Container</div>
+                  <div class="text-[10px] text-slate-500 uppercase tracking-wide">ISO 40ft HC</div>
+                </div>
+                <div class="architecture-block p-5 border border-[#262626] bg-[#111] text-center">
+                  <i data-lucide="expand" class="w-6 h-6 text-sky-400 mx-auto mb-3"></i>
+                  <div class="text-sm font-semibold text-white mb-1">Deployable Array</div>
+                  <div class="text-[10px] text-slate-500 uppercase tracking-wide">Hydraulic / Manual</div>
+                </div>
+                <div class="architecture-block p-5 border border-[#262626] bg-[#111] text-center">
+                  <i data-lucide="bolt" class="w-6 h-6 text-sky-400 mx-auto mb-3"></i>
+                  <div class="text-sm font-semibold text-white mb-1">Power Conversion</div>
+                  <div class="text-[10px] text-slate-500 uppercase tracking-wide">Container-Mounted</div>
+                </div>
+              </div>
+              <div class="hidden md:flex justify-center my-4">
+                <div class="w-px h-8 bg-[#262626]"></div>
+              </div>
+              <div class="architecture-block p-5 border border-[#262626] bg-[#111] text-center">
+                <i data-lucide="network" class="w-6 h-6 text-sky-400 mx-auto mb-3"></i>
+                <div class="text-sm font-semibold text-white mb-1">Output Bus / Grid Interconnect</div>
+                <div class="text-[10px] text-slate-500 uppercase tracking-wide">480V AC · Grid-Tie or Islanded</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Applications Block -->
+          <div id="int-applications" class="interior-section reveal">
+            <span class="text-[10px] font-semibold tracking-[0.2em] uppercase text-sky-400 mb-4 block">04 / Applications</span>
+            <h3 class="text-2xl md:text-3xl font-semibold text-white mb-6">Application Breakdown</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="p-6 border border-[#1a1a1a] bg-[#0a0a0a]">
+                <div class="text-sm font-semibold text-white mb-2">Telecom & Network Edge</div>
+                <p class="text-sm text-slate-400">Primary and backup power for macro towers, microcells, and network aggregation points.</p>
+              </div>
+              <div class="p-6 border border-[#1a1a1a] bg-[#0a0a0a]">
+                <div class="text-sm font-semibold text-white mb-2">EV Fleet Charging</div>
+                <p class="text-sm text-slate-400">Rapid deployment of high-capacity charging depots without utility interconnection delays.</p>
+              </div>
+              <div class="p-6 border border-[#1a1a1a] bg-[#0a0a0a]">
+                <div class="text-sm font-semibold text-white mb-2">Data Centers</div>
+                <p class="text-sm text-slate-400">Supplemental generation and microgrid integration for colocation and hyperscale facilities.</p>
+              </div>
+              <div class="p-6 border border-[#1a1a1a] bg-[#0a0a0a]">
+                <div class="text-sm font-semibold text-white mb-2">Defense & Remote Bases</div>
+                <p class="text-sm text-slate-400">Energy independence for forward operating bases and remote installations.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Deployment Process Block -->
+          <div id="int-deployment" class="interior-section reveal">
+            <span class="text-[10px] font-semibold tracking-[0.2em] uppercase text-sky-400 mb-4 block">05 / Deployment Process</span>
+            <h3 class="text-2xl md:text-3xl font-semibold text-white mb-6">From Factory to Field</h3>
+            <div class="grid md:grid-cols-4 gap-4">
+              <div class="relative p-6 border border-[#1a1a1a] bg-[#0a0a0a]">
+                <div class="text-3xl font-semibold text-sky-400/30 mb-3">01</div>
+                <div class="text-sm font-semibold text-white mb-2">Factory Integration</div>
+                <p class="text-xs text-slate-400">System assembled, tested, and commissioned before shipment.</p>
+              </div>
+              <div class="relative p-6 border border-[#1a1a1a] bg-[#0a0a0a]">
+                <div class="text-3xl font-semibold text-sky-400/30 mb-3">02</div>
+                <div class="text-sm font-semibold text-white mb-2">Site Delivery</div>
+                <p class="text-xs text-slate-400">Transport by standard flatbed or intermodal container.</p>
+              </div>
+              <div class="relative p-6 border border-[#1a1a1a] bg-[#0a0a0a]">
+                <div class="text-3xl font-semibold text-sky-400/30 mb-3">03</div>
+                <div class="text-sm font-semibold text-white mb-2">Field Deployment</div>
+                <p class="text-xs text-slate-400">Unpack, level, expand array, and connect output bus.</p>
+              </div>
+              <div class="relative p-6 border border-[#1a1a1a] bg-[#0a0a0a]">
+                <div class="text-3xl font-semibold text-sky-400/30 mb-3">04</div>
+                <div class="text-sm font-semibold text-white mb-2">Energize & Monitor</div>
+                <p class="text-xs text-slate-400">Commission, test, and connect to remote monitoring platform.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Conversion CTA Block -->
+          <div id="int-cta" class="interior-section reveal">
+            <div class="border border-[#1a1a1a] bg-[#0a0a0a] p-8 md:p-12 text-center">
+              <h3 class="text-2xl md:text-3xl font-semibold text-white mb-4">Request a Technical Deployment Brief</h3>
+              <p class="text-sm text-slate-400 max-w-xl mx-auto mb-8">
+                Receive detailed specifications, deployment timelines, and integration guidance for your mission-critical energy requirements.
+              </p>
+              <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="btn-primary px-8 py-3.5 text-[10px] font-semibold tracking-[0.15em] uppercase">Request Brief</a>
+                <a href="#contact" class="btn-secondary px-8 py-3.5 text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-300">Contact Engineering</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Get Updates -->
+  <section id="contact" class="relative py-24 md:py-32">
+    <div class="mx-auto max-w-[1440px] px-6 lg:px-12">
+      <div class="grid lg:grid-cols-2 gap-16">
+        <div class="reveal">
+          <span class="text-[10px] font-semibold tracking-[0.2em] uppercase text-sky-400 mb-4 block">Contact</span>
+          <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-6">Request Technical Information</h2>
+          <p class="text-base text-slate-400 leading-relaxed mb-8">
+            Speak with our deployment engineering team about your critical infrastructure requirements, deployment timeline, and system integration needs.
+          </p>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 border border-[#262626] flex items-center justify-center flex-shrink-0">
+                <i data-lucide="mail" class="w-4 h-4 text-sky-400"></i>
+              </div>
+              <div>
+                <div class="text-sm font-medium text-white mb-1">Engineering Inquiries</div>
+                <div class="text-sm text-slate-400">engineering@wingedsolar.com</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 border border-[#262626] flex items-center justify-center flex-shrink-0">
+                <i data-lucide="phone" class="w-4 h-4 text-sky-400"></i>
+              </div>
+              <div>
+                <div class="text-sm font-medium text-white mb-1">Deployment Support</div>
+                <div class="text-sm text-slate-400">+1 (512) 555-0140</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 border border-[#262626] flex items-center justify-center flex-shrink-0">
+                <i data-lucide="map-pin" class="w-4 h-4 text-sky-400"></i>
+              </div>
+              <div>
+                <div class="text-sm font-medium text-white mb-1">Headquarters</div>
+                <div class="text-sm text-slate-400">Austin, Texas, United States</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal stagger-1">
+          <form id="contact-form" class="border border-[#1a1a1a] bg-[#0a0a0a] p-8 md:p-10">
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label class="block text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-2">First Name</label>
+                <input type="text" required class="w-full bg-[#111] border border-[#262626] px-4 py-3 text-sm text-white placeholder-slate-600 transition-colors" placeholder="First name" />
+              </div>
+              <div>
+                <label class="block text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-2">Last Name</label>
+                <input type="text" required class="w-full bg-[#111] border border-[#262626] px-4 py-3 text-sm text-white placeholder-slate-600 transition-colors" placeholder="Last name" />
+              </div>
+            </div>
+            <div class="mb-6">
+              <label class="block text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-2">Work Email</label>
+              <input type="email" required class="w-full bg-[#111] border border-[#262626] px-4 py-3 text-sm text-white placeholder-slate-600 transition-colors" placeholder="name@company.com" />
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label class="block text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-2">Company</label>
+                <input type="text" class="w-full bg-[#111] border border-[#262626] px-4 py-3 text-sm text-white placeholder-slate-600 transition-colors" placeholder="Company" />
+              </div>
+              <div>
+                <label class="block text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-2">Title</label>
+                <input type="text" class="w-full bg-[#111] border border-[#262626] px-4 py-3 text-sm text-white placeholder-slate-600 transition-colors" placeholder="Title" />
+              </div>
+            </div>
+            <div class="mb-6">
+              <label class="block text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-2">Application / Interest</label>
+              <select class="w-full bg-[#111] border border-[#262626] px-4 py-3 text-sm text-white transition-colors">
+                <option value="">Select an application</option>
+                <option value="telecom">Telecom Infrastructure</option>
+                <option value="ev">EV Charging Networks</option>
+                <option value="disaster">Disaster Response</option>
+                <option value="industrial">Remote Industrial</option>
+                <option value="critical">Critical Infrastructure</option>
+                <option value="datacenter">Data Centers</option>
+              </select>
+            </div>
+            <div class="mb-8">
+              <label class="block text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-500 mb-2">Message</label>
+              <textarea rows="4" class="w-full bg-[#111] border border-[#262626] px-4 py-3 text-sm text-white placeholder-slate-600 transition-colors resize-none" placeholder="Describe your deployment requirements..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary w-full py-3.5 text-[10px] font-semibold tracking-[0.15em] uppercase">
+              Submit Request
+            </button>
+            <p class="mt-4 text-[10px] text-slate-500 text-center">
+              By submitting, you agree to receive technical communications from Winged Solar Solutions.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section id="about" class="relative py-24 md:py-32 bg-[#080808] border-t border-[#111]">
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2072&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[#080808] via-[#080808]/80 to-[#080808]"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 lg:px-12 text-center">
+      <h2 class="reveal text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white mb-6 max-w-4xl mx-auto">
+        Help Build Critical Energy Infrastructure
+      </h2>
+      <p class="reveal stagger-1 text-base md:text-lg text-slate-400 max-w-2xl mx-auto mb-10">
+        Partner with Winged Solar Solutions to deploy mission-critical solar and storage systems where traditional infrastructure cannot reach.
+      </p>
+      <div class="reveal stagger-2 flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#platforms" class="btn-primary px-8 py-3.5 text-[10px] font-semibold tracking-[0.15em] uppercase">Explore Platforms</a>
+        <a href="#contact" class="btn-secondary px-8 py-3.5 text-[10px] font-semibold tracking-[0.15em] uppercase text-slate-300">Contact Engineering</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="relative py-16 md:py-20 border-t border-[#1a1a1a] bg-[#050505]">
+    <div class="mx-auto max-w-[1440px] px-6 lg:px-12">
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mb-16">
+        <div class="col-span-2">
+          <a href="#" class="flex items-center gap-3 mb-6">
+            <div class="w-8 h-8 border border-slate-700 flex items-center justify-center bg-[#0a0a0a]">
+              <i data-lucide="zap" class="w-4 h-4 text-sky-400"></i>
+            </div>
+            <span class="text-sm font-semibold tracking-wide uppercase text-slate-100">Winged Solar</span>
+          </a>
+          <p class="text-sm text-slate-500 max-w-xs leading-relaxed">
+            Deployable energy infrastructure platform for mission-critical operations. Industrial-grade solar and storage systems.
+          </p>
+        </div>
+
+        <div>
+          <div class="text-[10px] font-semibold tracking-[0.2em] uppercase text-white mb-4">Platforms</div>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-sm text-slate-500 hover:text-sky-400 transition-colors">Eagle</a></li>
+            <li><a href="#" class="text-sm text-slate-500 hover:text-sky-400 transition-colors">Hawk</a></li>
+            <li><a href="#" class="text-sm text-slate-500 hover:text-sky-400 transition-colors">Sparrow</a></li>
+            <li><a href="#" class="text-sm text-slate-500 hover:text-sky-400 transition-colors">Platform Comparison</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="text-[10px] font-semibold tracking-[0.2em] uppercase text-white mb-4">Industries</div>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-sm text-slate-500 hover:text-sky-400 transition-colors">Telecom</a></li>
+            <li><a href="#" class="text-sm text-slate-500 hover:text-sky-400 transition-colors">EV Charging</a></li>
+            <li><a href="#" class="text-sm text-slate-500 hover:text-sky-400 transition-colors">Disaster Response</a></li>
+            <li><a href="#" class="text-sm text-slate-500 hover:text-sky-400 transition-colors">Data Centers</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="text-[10px] font-semibold tracking-[0.2em] uppercase text-white mb-4">Resources</div>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-sm text-slate-500 hover:text-sky-400 transition-colors">Technical Briefs</a></li>
+            <li><a href="#" class="text-sm text-slate-500 hover:text-sky-400 transition-colors">Deployment Guides</a></li>
+            <li><a href="#" class="text-sm text-slate-500 hover:text-sky-400 transition-colors">Case Studies</a></li>
+            <li><a href="#" class="text-sm text-slate-500 hover:text-sky-400 transition-colors">CAD Downloads</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="text-[10px] font-semibold tracking-[0.2em] uppercase text-white mb-4">Company</div>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-sm text-slate-500 hover:text-sky-400 transition-colors">About</a></li>
+            <li><a href="#" class="text-sm text-slate-500 hover:text-sky-400 transition-colors">Careers</a></li>
+            <li><a href="#" class="text-sm text-slate-500 hover:text-sky-400 transition-colors">Contact</a></li>
+            <li><a href="#" class="text-sm text-slate-500 hover:text-sky-400 transition-colors">News</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-[#1a1a1a] flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="text-[10px] text-slate-600">
+          © 2026 Winged Solar Solutions. All rights reserved.
+        </div>
+        <div class="flex gap-6">
+          <a href="#" class="text-[10px] text-slate-600 hover:text-sky-400 transition-colors uppercase tracking-wide">Privacy</a>
+          <a href="#" class="text-[10px] text-slate-600 hover:text-sky-400 transition-colors uppercase tracking-wide">Terms</a>
+          <a href="#" class="text-[10px] text-slate-600 hover:text-sky-400 transition-colors uppercase tracking-wide">Compliance</a>
+          <a href="#" class="text-[10px] text-slate-600 hover:text-sky-400 transition-colors uppercase tracking-wide">Supplier</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Success Modal -->
+  <div id="success-modal" class="fixed inset-0 z-[70] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/80"></div>
+    <div class="relative bg-[#0a0a0a] border border-[#1a1a1a] p-8 max-w-md mx-4 transform scale-95 transition-transform duration-300">
+      <div class="w-12 h-12 bg-sky-400/10 border border-sky-400/30 flex items-center justify-center mx-auto mb-4">
+        <i data-lucide="check" class="w-6 h-6 text-sky-400"></i>
+      </div>
+      <h3 class="text-xl font-semibold text-white text-center mb-2">Request Submitted</h3>
+      <p class="text-sm text-slate-400 text-center mb-6">Our engineering team will review your requirements and respond within one business day.</p>
+      <button id="close-modal" class="btn-primary w-full py-3 text-[10px] font-semibold tracking-[0.15em] uppercase">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Header scroll effect
+      const header = document.getElementById('site-header');
+      let lastScroll = 0;
+
+      window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll > 50) {
+          header.classList.add('bg-[#050505]/95', 'backdrop-blur-md', 'border-b', 'border-[#1a1a1a]');
+          header.classList.remove('bg-transparent');
+        } else {
+          header.classList.remove('bg-[#050505]/95', 'backdrop-blur-md', 'border-b', 'border-[#1a1a1a]');
+          header.classList.add('bg-transparent');
+        }
+        lastScroll = currentScroll;
+      }, { passive: true });
+
+      // Mobile menu
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenuClose = document.getElementById('mobile-menu-close');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+      function openMobileMenu() {
+        mobileMenu.classList.add('open');
+        mobileMenuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+        mobileMenuOverlay.classList.add('opacity-100', 'pointer-events-auto');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMobileMenu() {
+        mobileMenu.classList.remove('open');
+        mobileMenuOverlay.classList.remove('opacity-100', 'pointer-events-auto');
+        mobileMenuOverlay.classList.add('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = '';
+      }
+
+      mobileMenuBtn.addEventListener('click', openMobileMenu);
+      mobileMenuClose.addEventListener('click', closeMobileMenu);
+      mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+      // Close mobile menu on link click
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+      });
+
+      // Reveal animations
+      const revealElements = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      revealElements.forEach(el => revealObserver.observe(el));
+
+      // Animated metrics
+      const metricElements = document.querySelectorAll('.metric-value');
+      const metricObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseFloat(el.dataset.target);
+            const suffix = el.dataset.suffix || '';
+            const isDecimal = target % 1 !== 0;
+            const duration = 2000;
+            const startTime = performance.now();
+
+            function updateMetric(currentTime) {
+              const elapsed = currentTime - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+              const current = target * easeOutQuart;
+
+              if (isDecimal) {
+                el.textContent = current.toFixed(target < 10 ? 2 : 1) + suffix;
+              } else {
+                el.textContent = Math.floor(current) + suffix;
+              }
+
+              if (progress < 1) {
+                requestAnimationFrame(updateMetric);
+              } else {
+                if (isDecimal) {
+                  el.textContent = target.toFixed(target < 10 ? 2 : 1) + suffix;
+                } else {
+                  el.textContent = target + suffix;
+                }
+              }
+            }
+
+            requestAnimationFrame(updateMetric);
+            metricObserver.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      metricElements.forEach(el => metricObserver.observe(el));
+
+      // Product module tabs
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabPanels = document.querySelectorAll('.tab-panel');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = btn.dataset.tab;
+
+          tabBtns.forEach(b => {
+            b.classList.remove('active', 'border-sky-400', 'bg-sky-400/5', 'text-sky-400');
+            b.classList.add('border-[#262626]', 'bg-transparent', 'text-slate-400');
+          });
+
+          btn.classList.add('active', 'border-sky-400', 'bg-sky-400/5', 'text-sky-400');
+          btn.classList.remove('border-[#262626]', 'bg-transparent', 'text-slate-400');
+
+          tabPanels.forEach(panel => {
+            if (panel.id === target) {
+              panel.classList.remove('hidden');
+              panel.classList.add('active');
+            } else {
+              panel.classList.add('hidden');
+              panel.classList.remove('active');
+            }
+          });
+        });
+      });
+
+      // Interior sticky nav active states
+      const interiorNavLinks = document.querySelectorAll('.interior-nav-link');
+      const interiorSections = document.querySelectorAll('.interior-section');
+
+      const interiorObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            interiorNavLinks.forEach(link => {
+              if (link.getAttribute('href') === `#${id}`) {
+                link.classList.add('active', 'border-sky-400', 'text-sky-400');
+                link.classList.remove('border-transparent', 'text-slate-400');
+              } else {
+                link.classList.remove('active', 'border-sky-400', 'text-sky-400');
+                link.classList.add('border-transparent', 'text-slate-400');
+              }
+            });
+          }
+        });
+      }, { threshold: 0.3, rootMargin: '-100px 0px -60% 0px' });
+
+      interiorSections.forEach(section => interiorObserver.observe(section));
+
+      // Active nav on scroll
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === `#${id}`) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, { threshold: 0.3 });
+
+      sections.forEach(section => navObserver.observe(section));
+
+      // Form submission
+      const contactForm = document.getElementById('contact-form');
+      const successModal = document.getElementById('success-modal');
+      const closeModal = document.getElementById('close-modal');
+
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Simulate form submission
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Submitting...';
+        submitBtn.disabled = true;
+
+        setTimeout(() => {
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+          contactForm.reset();
+          successModal.classList.remove('opacity-0', 'pointer-events-none');
+          successModal.querySelector('.relative').classList.remove('scale-95');
+          successModal.querySelector('.relative').classList.add('scale-100');
+          document.body.style.overflow = 'hidden';
+        }, 1500);
+      });
+
+      closeModal.addEventListener('click', () => {
+        successModal.classList.add('opacity-0', 'pointer-events-none');
+        successModal.querySelector('.relative').classList.add('scale-95');
+        successModal.querySelector('.relative').classList.remove('scale-100');
+        document.body.style.overflow = '';
+      });
+
+      successModal.addEventListener('click', (e) => {
+        if (e.target === successModal || e.target.classList.contains('bg-black/80')) {
+          closeModal.click();
+        }
+      });
+
+      // Button click feedback for non-form buttons
+      document.querySelectorAll('button:not([type="submit"]):not(.tab-btn):not(#mobile-menu-btn):not(#mobile-menu-close):not(#close-modal)').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const originalText = this.textContent;
+          this.textContent = 'Loading...';
+          setTimeout(() => {
+            this.textContent = originalText;
+          }, 800);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
